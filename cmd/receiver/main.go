@@ -15,11 +15,13 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer c.Close()
 
 	q, err := c.QueueDeclare("Kazekim")
 	if err != nil {
 		panic(err)
 	}
+
 	fmt.Println("======Start Receiver======")
 
 	f := func(message string) {

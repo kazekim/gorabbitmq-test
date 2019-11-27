@@ -12,11 +12,11 @@ import (
 
 func main() {
 
-
 	c, err := rabbitmq.NewConnection()
 	if err != nil {
 		panic(err)
 	}
+	defer c.Close()
 
 	q, err := c.QueueDeclare("Kazekim")
 	if err != nil {
