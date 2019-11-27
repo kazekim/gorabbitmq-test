@@ -10,13 +10,17 @@ import (
 	"log"
 )
 
+const (
+	RabbitMQConnectionString = "amqp://guest:guest@localhost:15672/"
+)
+
 type Connection struct {
 	conn *amqp.Connection
 	channel *amqp.Channel
 }
 
 func NewConnection() (*Connection, error) {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:15672/")
+	conn, err := amqp.Dial(RabbitMQConnectionString)
 
 	if err != nil {
 		return nil, fmt.Errorf("failed to connect to RabbitMQ: %v", err.Error())
