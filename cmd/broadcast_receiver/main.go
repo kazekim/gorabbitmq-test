@@ -17,7 +17,7 @@ func main() {
 	}
 	defer c.Close()
 
-	q, err := c.QueueDeclare("Kazekim")
+	q, err := c.ExchangeDeclareReceiverBroadcast("KazekimBC")
 	if err != nil {
 		panic(err)
 	}
@@ -28,5 +28,6 @@ func main() {
 		fmt.Println("Receive : ", message)
 	}
 
-	c.Consume(q, f)
+	c.Consume(q, false, f)
+
 }

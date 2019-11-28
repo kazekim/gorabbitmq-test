@@ -7,5 +7,6 @@ package rabbitmq
 import "github.com/streadway/amqp"
 
 type Queue struct {
-	q amqp.Queue
+	Queue *amqp.Queue
+	Name string
 }
